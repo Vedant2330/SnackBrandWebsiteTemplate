@@ -1,4 +1,15 @@
-import type { Product, Category, Benefit, Testimonial, Stat, FAQ, BlogPost, NavigationItem } from '@/lib/types'
+import type {
+  Product,
+  Category,
+  Benefit,
+  Testimonial,
+  Stat,
+  FAQ,
+  BlogPost,
+  NavigationItem,
+  BenefitIcon,
+  ProductCategory,
+} from '@/lib/types'
 
 // ============================================
 // BRAND BENEFITS (from product image analysis)
@@ -6,42 +17,42 @@ import type { Product, Category, Benefit, Testimonial, Stat, FAQ, BlogPost, Navi
 export const BRAND_BENEFITS: Benefit[] = [
   {
     id: 'fiber',
-    icon: 'fiber',
+    icon: 'fiber' as BenefitIcon,
     title: 'Rich in Dietary Fibre',
     description:
       'Our millet-based snacks are naturally high in dietary fiber, supporting healthy digestion and keeping you fuller for longer.',
   },
   {
     id: 'protein',
-    icon: 'protein',
+    icon: 'protein' as BenefitIcon,
     title: 'Source of Protein',
     description:
       'Each serving delivers plant-based protein from nutrient-dense millets, perfect for active lifestyles and muscle recovery.',
   },
   {
     id: 'roasted',
-    icon: 'roasted',
+    icon: 'roasted' as BenefitIcon,
     title: 'Roasted, Not Fried',
     description:
       'We never deep-fry. Our snacks are slowly roasted to crispy perfection, preserving nutrients while cutting unhealthy fats.',
   },
   {
     id: 'no-palm-oil',
-    icon: 'no-palm-oil',
+    icon: 'no-palm-oil' as BenefitIcon,
     title: 'No Palm Oil',
     description:
       'Committed to sustainability and heart health — zero palm oil in any product. Only wholesome, natural ingredients.',
   },
   {
     id: 'gluten-free',
-    icon: 'gluten-free',
+    icon: 'gluten-free' as BenefitIcon,
     title: 'Gluten-Free Options',
     description:
       'Specially crafted gluten-free range using millets like jowar, ragi, and bajra — safe for celiac and gluten-sensitive diets.',
   },
   {
     id: 'millet-based',
-    icon: 'millet-based',
+    icon: 'millet-based' as BenefitIcon,
     title: 'Ancient Grains, Modern Snacking',
     description:
       'Reviving the power of millets — jowar, bajra, ragi, and multi-millet blends — for nutrition that stands the test of time.',
@@ -57,6 +68,89 @@ export const BRAND_STATS: Stat[] = [
   { id: 'customers', label: 'Happy Customers', value: 50000, suffix: '+', description: 'And growing daily' },
   { id: 'retail', label: 'Retail Partners', value: 200, suffix: '+', description: 'Across India' },
 ]
+
+// ============================================
+// BRAND STORY
+// ============================================
+export interface TimelineItem {
+  year: string
+  title: string
+  description: string
+  icon: string
+}
+
+export interface BrandStory {
+  paragraphs: string[]
+  values: string[]
+  stats: { label: string; value: string }[]
+  timeline: TimelineItem[]
+}
+
+export const BRAND_STORY: BrandStory = {
+  paragraphs: [
+    'Founded in 2009 in a modest kitchen in Mumbai, Manju Foods began with a simple question: why must healthy food be boring? Our founder, Manju Agarwal, watched her grandchildren reject nutritious millets for processed snacks loaded with palm oil, preservatives, and empty calories. She knew there had to be a better way — one that honored India\'s ancient grains without sacrificing the joy of snacking.',
+    'What started as hand-rolled khakhra for family gatherings blossomed into a mission: "Healthy Bhi Tasty Bhi" — healthy AND tasty. Today, after 15+ years, we craft 60+ products across 12 categories — from millet noodles that cook in 2 minutes to handmade khakhra roasted on traditional tawas, from protein-packed wafer sticks to breakfast premixes that make dosas effortless. Every product is slow-roasted, never fried. Zero palm oil. No artificial preservatives. Just wholesome millets, honest ingredients, and flavors that taste like home.',
+    'But our story isn\'t just about snacks. It\'s about the farmers in Karnataka who grow our ragi with regenerative practices. The women\'s self-help groups in Gujarat who hand-roll our khakhra with generations of expertise. The nutritionists who validate every recipe. The parents who trust us with their children\'s lunchboxes. And the 50,000+ families who have made Manju Foods a daily ritual. This is snacking with soul — where every bite tells a story of tradition reimagined for modern lives.',
+  ],
+  values: [
+    'Ancient Wisdom, Modern Science',
+    'Roasted Never Fried',
+    'Zero Palm Oil',
+    'Farmer-First Sourcing',
+    'Transparency Always',
+    'Joy in Every Bite',
+  ],
+  stats: [
+    { label: 'Years of Craft', value: '15+' },
+    { label: 'Farmer Partners', value: '500+' },
+    { label: 'Products Crafted', value: '60+' },
+    { label: 'Families Served', value: '50K+' },
+  ],
+  timeline: [
+    {
+      year: '2009',
+      title: 'Humble Beginnings',
+      description: 'Manju Agarwal starts hand-rolling khakhra in her Mumbai kitchen using family recipes passed down generations. First batch: 50 packs for neighbors.',
+      icon: 'heart',
+    },
+    {
+      year: '2012',
+      title: 'First Millet Innovation',
+      description: 'Launch of India\'s first Jowar-based baked snacks. Pioneering "roasted not fried" at scale when the market only knew deep-frying.',
+      icon: 'sparkles',
+    },
+    {
+      year: '2015',
+      title: 'Farmer Partnership Program',
+      description: 'Established direct sourcing from 100+ millet farmers in Karnataka & Maharashtra. Fair prices, regenerative farming support, seed preservation.',
+      icon: 'leaf',
+    },
+    {
+      year: '2018',
+      title: 'Gluten-Free Breakthrough',
+      description: 'R&D milestone: 100% millet noodles & pasta with perfect texture. Certified gluten-free. Changes the game for celiac families in India.',
+      icon: 'award',
+    },
+    {
+      year: '2021',
+      title: 'Digital Transformation',
+      description: 'DTC launch with subscription model. 25K+ subscribers in year one. Community-driven product development — customers co-create flavors.',
+      icon: 'users',
+    },
+    {
+      year: '2024',
+      title: 'National Retail Expansion',
+      description: '200+ retail partners across Tier 1 & 2 cities. Launch of "Healthy Bhi Tasty Bhi" campaign. Featured on Shark Tank India.',
+      icon: 'award',
+    },
+    {
+      year: '2025',
+      title: 'Global Vision',
+      description: 'Export to 5 countries. New state-of-the-art facility in Pune. R&D center for millet food science. Next chapter: the world discovers millets.',
+      icon: 'clock',
+    },
+  ],
+}
 
 // ============================================
 // TESTIMONIALS
@@ -125,7 +219,7 @@ export const TESTIMONIALS: Testimonial[] = [
 ]
 
 // ============================================
-// FAQs
+// FAQS
 // ============================================
 export const FAQS: FAQ[] = [
   {
@@ -148,7 +242,7 @@ export const FAQS: FAQ[] = [
     id: '3',
     question: 'Are your products gluten-free?',
     answer:
-      'Many of our products are naturally gluten-free since millets don't contain gluten. Our Gluten-Free Noodles/Pasta range is specially certified. However, some products like Wheat Cookies and certain Khakhra variants do contain wheat. Check individual product pages for allergen information.',
+      'Many of our products are naturally gluten-free since millets don\'t contain gluten. Our Gluten-Free Noodles/Pasta range is specially certified. However, some products like Wheat Cookies and certain Khakhra variants do contain wheat. Check individual product pages for allergen information.',
     category: 'dietary',
     order: 3,
   },

@@ -243,3 +243,17 @@ export interface Stat {
   prefix?: string
   description?: string
 }
+
+export interface NavigationItem {
+  label: string
+  href: string
+  children?: NavigationChild[]
+  external?: boolean
+}
+
+export interface NavigationChild {
+  label: string
+  href: string
+  description?: string
+  external?: boolean
+}
